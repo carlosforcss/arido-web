@@ -64,16 +64,24 @@
     .nav-inner > a:first-child { display: flex; align-items: center; line-height: 0; }
     .nav-logo { height: 60px; width: auto; display: block; }
     .nav-cta {
-      background: var(--yellow); color: var(--brand);
+      background: var(--brand); color: var(--white);
       padding: 0.375rem 1rem;
-      font-size: 0.85rem; font-weight: 700; line-height: normal;
-      border-radius: var(--radius);
+      font-size: 0.85rem; font-weight: 600; line-height: normal;
+      border-radius: 999px;
       transition: background 0.15s; white-space: nowrap;
       align-self: center;
     }
     .nav-cta:hover { background: var(--brand-dk); }
 
     /* === HERO === */
+    #hero-top {
+      background: var(--gray); color: var(--text);
+      padding: 4rem 1.25rem;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    #hero-top .container {
+      display: flex; flex-direction: column; align-items: center;
+    }
     #hero {
       background: var(--gray); color: var(--text);
       height: calc(100svh - 84px);
@@ -82,22 +90,24 @@
     }
     @media (min-width: 768px) {
       #hero { flex-direction: row; }
-      .hero-image-half { flex: 1; min-height: 100%; }
-      .hero-content-half { flex: 1; }
+      #hero-img { min-height: 100%; }
+      #hero-copy { }
     }
-    .hero-image-half {
+    #hero-img {
       flex: 1;
       overflow: hidden;
+      min-width: 40%;
+      min-height: 50%;
     }
-    .hero-image-half img {
+    #hero-img img {
       width: 100%; height: 100%; object-fit: cover; display: block;
     }
-    .hero-content-half {
-      flex: 1;
+    #hero-copy {
+      flex: 3;
       display: flex; align-items: center; justify-content: center;
       padding: 3rem 1.25rem; text-align: center;
     }
-    .hero-content-half .container {
+    #hero-copy .container {
       display: flex; flex-direction: column; align-items: center;
     }
     .hero-tag {
@@ -110,6 +120,11 @@
     }
     .hero-title {
       font-size: clamp(2.08rem, 1.6rem + 3.2vw, 4.4rem);
+      line-height: 1.08;
+      margin-bottom: 1.25rem;
+    }
+    .hero-title--sm {
+      font-size: clamp(1.66rem, 1.28rem + 2.56vw, 3.52rem);
       font-weight: 900; line-height: 1.05; letter-spacing: -0.03em;
       margin-bottom: 1.5rem; max-width: 820px; margin-left: auto; margin-right: auto;
     }
@@ -138,7 +153,7 @@
     }
 
     /* === PAIN SECTION === */
-    #pain { background: var(--gray); padding: 5rem 1.25rem; }
+    #pain { background: var(--white); padding: 5rem 1.25rem; }
     .pain-label {
       font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--brand); font-weight: 700; margin-bottom: 1.25rem;
@@ -243,28 +258,6 @@
     }
     .service-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
 
-    /* === PROMISE === */
-    #promise {
-      background: var(--brand); color: var(--white);
-      padding: 5rem 1.25rem; text-align: center;
-    }
-    .promise-eyebrow {
-      font-size: 0.72rem; letter-spacing: 0.15em;
-      text-transform: uppercase; font-weight: 700;
-      opacity: 0.75; margin-bottom: 1rem;
-    }
-    .promise-number {
-      font-size: clamp(6rem, 4rem + 8vw, 12rem);
-      font-weight: 900; line-height: 1; letter-spacing: -0.05em;
-    }
-    .promise-unit {
-      font-size: clamp(1.25rem, 1rem + 1.2vw, 2rem);
-      font-weight: 700; opacity: 0.85; margin-bottom: 1.5rem;
-    }
-    .promise-body {
-      font-size: clamp(0.95rem, 0.875rem + 0.4vw, 1.1rem);
-      opacity: 0.8; max-width: 440px; margin: 0 auto 2.5rem; line-height: 1.75;
-    }
     .btn-dark {
       display: inline-block; background: var(--black); color: var(--white);
       padding: 1rem 2rem; border-radius: var(--radius);
@@ -275,12 +268,12 @@
 
     /* === FOOTER === */
     footer {
-      background: var(--black); color: rgba(242,242,242,0.45);
-      padding: 2.5rem 1.25rem; text-align: center;
+      background: var(--black); color: #F2F2F2;
+      padding: 1rem 1.25rem 2.5rem; text-align: center;
     }
-    .footer-logo { height: 44px; width: auto; margin: 0 auto 1.25rem; }
-    .footer-tag { font-size: 0.8rem; margin-bottom: 0.5rem; }
-    .footer-copy { font-size: 0.72rem; opacity: 0.5; }
+    .footer-logo { height: 60px; width: auto; margin: 0 auto 0.4rem; }
+    .footer-tag { font-size: 0.8rem; margin-bottom: 0.5rem; color: #F2F2F2; }
+    .footer-copy { font-size: 0.72rem; color: #F2F2F2; }
 
     /* === FADE-IN ANIMATION === */
     @media (prefers-reduced-motion: no-preference) {
@@ -300,8 +293,9 @@
       .nav-inner { padding: 0; }
       #nav { padding: 1rem 2rem; }
       #hero { height: calc(100svh - 84px); }
-      #pain, #services, #promise, #why, #contact { padding: 7rem 2rem; }
+      #pain, #services, #why, #contact { padding: 7rem 2rem; }
       .nav-logo { height: 72px; }
+      .footer-logo { height: 72px; }
       .pain-stats { grid-template-columns: repeat(4, 1fr); }
       .services-grid { grid-template-columns: repeat(3, 1fr); }
       footer { padding: 3rem 2rem; }
@@ -334,7 +328,7 @@
           fetchpriority="high"
         >
       </a>
-      <a href="https://wa.me/5216141666448" target="_blank" rel="noopener noreferrer" class="nav-cta">Contáctanos</a>
+      <a href="https://wa.me/5216241264823" target="_blank" rel="noopener noreferrer" class="nav-cta">Contáctanos</a>
     </div>
   </nav>
 
@@ -342,19 +336,19 @@
 
     <!-- SECTION: HERO — Pain point directo -->
     <section id="hero">
-      <div class="hero-image-half">
+      <div id="hero-img">
         <img src="static/hero_img.jpg" alt="árido — Software Factory" width="1920" height="960" fetchpriority="high">
       </div>
-      <div class="hero-content-half">
+      <div id="hero-copy">
         <div class="container">
-          <span class="hero-tag">Cualquier tecnología suficientemente avanzada es indistinguible de la magia. &mdash; Arthur C. Clarke</span>
+          <span class="hero-tag">Cualquier tecnología suficientemente avanzada es indistinguible de la magia. <br /J>&mdash; Arthur C. Clarke</span>
           <h1 class="hero-title">
             ¿Tu negocio<br>depende de <span class="highlight-green">Excel?</span>
           </h1>
           <p class="hero-sub">
             Cada semana que operás con hojas de cálculo es una semana <br />que le regalás a la inestabilidad. Existe una mejor forma.
           </p>
-          <a href="https://wa.me/5216141666448" target="_blank" rel="noopener noreferrer" class="btn-primary">Agenda tu consulta gratuita &rarr;</a>
+          <a href="https://wa.me/5216241264823" target="_blank" rel="noopener noreferrer" class="btn-primary">Agenda tu consulta gratuita &rarr;</a>
           <span class="hero-note">Sin costo. Sin compromiso. En menos de 30 minutos.</span>
         </div>
       </div>
@@ -453,16 +447,15 @@
       </div>
     </section>
 
-    <!-- SECTION: PROMISE — Prueba de velocidad -->
-    <section id="promise">
+    <!-- SECTION: HERO COPY ONLY — CTA antes del footer -->
+    <section id="hero-top">
       <div class="container">
-        <p class="promise-eyebrow">Nuestra promesa</p>
-        <div class="promise-number" aria-label="2">2</div>
-        <div class="promise-unit">meses para tu primer MVP</div>
-        <p class="promise-body fade-in">
-          No en un año. No &ldquo;depende de los requerimientos&rdquo;. En 8 semanas tenés un producto funcionando, en producción, con usuarios reales.
+        <h1 class="hero-title hero-title--sm">Automatiza tu negocio hoy</h1>
+        <p class="hero-sub">
+          Menos horas operando. Más margen para crecer.
         </p>
-        <a href="https://wa.me/5216141666448" target="_blank" rel="noopener noreferrer" class="btn-dark">Empezar ahora &rarr;</a>
+        <a href="https://wa.me/5216241264823" target="_blank" rel="noopener noreferrer" class="btn-primary">Agenda tu consulta gratuita &rarr;</a>
+        <span class="hero-note">Sin costo. Sin compromiso. En menos de 30 minutos.</span>
       </div>
     </section>
 
@@ -477,7 +470,8 @@
       width="100" height="22"
       loading="lazy"
     >
-    <p class="footer-tag">Una empresa orgullosamente del norte de M&eacute;xico &#127797;</p>
+    <p class="footer-tag">A proud northern Mexico company | We improve business through software.</p>
+    <p class="footer-copy"><a href="mailto:hola@arido.dev" style="color:inherit">hola@arido.dev</a> &nbsp;·&nbsp; +52 614 624 126 4823</p>
   </footer>
 
   <script>
