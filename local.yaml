@@ -1,0 +1,9 @@
+services:
+  web:
+    image: node:alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "8080:8080"
+    command: sh -c "npm install -g live-server --quiet && live-server --port=8080 --host=0.0.0.0 --no-browser"
